@@ -1,24 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap');
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
 :root{
     --font-main: 'Dosis', sans-serif;
+    --ink: rgb(19, 19, 88);
+    --line: #dcdce6;
+    --page: #f4f5f9;
 }
 body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: var(--font-main);
-    color: rgb(19, 19, 88);
+    color: var(--ink);
+    background-color: var(--page);
 }
 header{
     width: 90%;
     margin: 0 auto;
     display: flex;
     padding: 8px 5%;
-    background-color: #fafafb;
+    background-color: #ffffff;
     justify-content: space-between;
-    box-shadow: 0px 2px 5px rgb(88 93 111 / 40%);
     align-items: center;
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0px 2px 8px rgba(19, 19, 88, 0.08);
+}
+header h2{
+    margin: 0;
+    font-weight: 600;
 }
 .tools{
     display: flex;
@@ -28,32 +36,47 @@ header{
 }
 .color-palette{
     display: grid;
-    grid-template-columns: repeat(10, 15px);
+    grid-template-columns: repeat(10, 18px);
     grid-gap: 5px;
 }
 .color{
-    width: 15px;
-    height: 15px;
-    border: .8px solid rgb(207, 205, 205);
+    width: 18px;
+    height: 18px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
     background-color: var(--set-color);
     cursor: pointer;
+    transition: transform .1s;
+}
+.color:hover{
+    transform: scale(1.15);
 }
 .canvas-container{
     height: 90vh;
+    padding: 10px;
     cursor: url(./pencil.png), auto;
+}
+canvas{
+    display: block;
+    background-color: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: 8px;
 }
 
 .btn{
     font-family: var(--font-main);
     font-weight: 500;
     font-size: 14px;
-    color: rgb(19, 19, 88);
+    color: var(--ink);
     background: none;
-    border: .8px solid rgb(207, 205, 205);
+    border: 1px solid var(--line);
+    border-radius: 6px;
     position: relative;
+    cursor: pointer;
+    transition: background .15s;
 }
 .btn:hover{
-    background: rgba(212, 203, 203, 0.235);
+    background: rgba(19, 19, 88, 0.07);
 }
 
 .color-btn{
@@ -66,10 +89,11 @@ header{
     height: 20px;
     margin: 0;
     padding: 0;
+    border-radius: 3px;
     background-color: green;
 }
 .size-btn{
-    padding: 5px;
+    padding: 5px 8px;
 }
 .size-btn span{
     margin: 0 8px;
@@ -78,17 +102,18 @@ header{
     list-style: none;
     display: none;
     position: absolute;
-    top: 20px;
+    top: 100%;
+    margin-top: 6px;
     width: 100%;
     left: 0;
-    border-radius: 2px;
+    z-index: 2;
+    border-radius: 6px;
     background-color: white;
-    box-shadow: 0px 4px 30px rgba(165, 190, 204, 0.25);
-    border: .8px solid rgb(207, 205, 205);
-    padding: 0;
+    box-shadow: 0px 4px 16px rgba(19, 19, 88, 0.15);
+    border: 1px solid var(--line);
     flex-direction: column;
     align-items: center;
-    padding-top: 10px;
+    padding: 10px 0 0;
 }
 .show-list{
     display: flex;
@@ -99,19 +124,10 @@ header{
 .size-list li div{
     width: 100%;
     height: var(--set-size);
-    background-color: rgb(19, 19, 88);
+    background-color: var(--ink);
+    border-radius: 2px;
     margin-bottom: 10px;
     cursor: pointer;
-}
-.color_box{
-    width: 100%;
-}
-.color_box input[type=checkbox]{
-    display: none;
-    box-sizing: border-box;
-}
-.color_box span{
-    box-sizing: border-box;
 }
 input[type=color]{
     opacity: 0;
